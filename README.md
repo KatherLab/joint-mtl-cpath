@@ -12,24 +12,25 @@ pip install -r requirements.txt
 ```
 
 ## Training the model
-2. Edit TrainConfig in `config.py` with the desired targets, data paths and modeling configurations;
-3. Run `python trainer_mtl.py`.
+1. Edit TrainConfig in `config.py` with the desired targets, data paths and modeling configurations;
+2. Run `python trainer_mtl.py`.
 
 ## Externally evaluate the model
 1. Edit TestConfig in `config.py` with the respective targets, data paths and modeling configurations;
 2. Run `python test.py`.
 
-## Weighting and balancing techniques:
+## Multi-task balancing methods:
+The following balancing methods can be selected in the config file:
 
 ### Weighting-based:
 - **Equal** - All task weightings are 1, naive. `weight = "equal"`
-- **Uncertainty** - [https://arxiv.org/abs/1705.07115](https://arxiv.org/abs/1705.07115) `weight = "uncert"`
-- **Dynamic Weight Average** - [https://arxiv.org/abs/1803.10704](https://arxiv.org/abs/1803.10704) `weight = "dwa"`
+- **Uncertainty** - [https://arxiv.org/abs/1705.07115](https://arxiv.org/abs/1705.07115). `weight = "uncert"`
+- **Dynamic Weight Average** - [https://arxiv.org/abs/1803.10704](https://arxiv.org/abs/1803.10704). `weight = "dwa"`
 - **Auto-Lambda** - [https://arxiv.org/abs/2202.03091](https://arxiv.org/abs/2202.03091). `weight = "autol"`
 
 ### Gradient-based:
-- **GradDrop** -  [https://arxiv.org/abs/2010.06808](https://arxiv.org/abs/2010.06808) `grad_method = "graddrop"`
-- **PCGrad** - [https://arxiv.org/abs/2001.06782](https://arxiv.org/abs/2001.06782) `grad_method = "pcgrad"`
-- **CAGrad** - [https://arxiv.org/abs/2110.14048](https://arxiv.org/abs/2110.14048) `grad_method = "cagrad"`
+- **GradDrop** -  [https://arxiv.org/abs/2010.06808](https://arxiv.org/abs/2010.06808). `grad_method = "graddrop"`
+- **PCGrad** - [https://arxiv.org/abs/2001.06782](https://arxiv.org/abs/2001.06782). `grad_method = "pcgrad"`
+- **CAGrad** - [https://arxiv.org/abs/2110.14048](https://arxiv.org/abs/2110.14048). `grad_method = "cagrad"`
 
 Shoutout to the authors of aforementioned papers for having well-structured code which made my life easier - please acknowledge their work by also citing them if you found this implementation useful!
