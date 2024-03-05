@@ -6,9 +6,9 @@ class TrainConfig:
     target_label_class="isMSIH"
     label_mapping = {'MSS': 0, 'MSI-H': 1}
     target_label_regr="Intratumor Heterogeneity"
-    clini_table="/mnt/bulk/omarelnahhas/omarshome/omars_hdd/omar/omar/transformer_immuno_project/joint_learning/CRC_MSI_CLINI.xlsx"
-    slide_table="/mnt/bulk/omarelnahhas/omarshome/omars_hdd/omar/omar/STAMP_data/TCGA-CRC-DX/TCGA-CRC-DX_SLIDE.csv"
-    feature_dir="/mnt/bulk/omarelnahhas/omarshome/omars_hdd/omar/omar/STAMP_data/TCGA-CRC-DX/STAMP_macenko_xiyuewang-ctranspath-7c998680"
+    clini_table="/path/to/clini_table.xlsx"
+    slide_table="/path/to/slide_table.csv"
+    feature_dir="/path/to/feature/vectors/STAMP_raw_xiyuewang-ctranspath-7c998680"
 
     # Training-related configuration
     baseline=True # If True, the baseline model is trained
@@ -58,11 +58,11 @@ class TestConfig:
     label_mapping = {'MSS': 0, 'MSI-H': 1}
     target_label_regr="Intratumor Heterogeneity"
     task_type= "joint" #"joint", "regression", "classification"
-    deploy_folder="autol_cagrad_isMSIHIntratumor Heterogeneityjoint-mtl-cpath_06022024_171540"
-    model_path=f"/mnt/bulk/omarelnahhas/omarshome/omars_hdd/omar/omar/transformer_immuno_project/MICCAI_submission/joint-mtl-cpath/{deploy_folder}"
-    clini_table="/mnt/bulk/omarelnahhas/omarshome/omars_hdd/omar/omar/STAMP_data/CPTAC-COAD-DX/CPTAC_CRC_SOPHIA_CLINI.xlsx"
-    slide_table="/mnt/bulk/omarelnahhas/omarshome/omars_hdd/omar/omar/STAMP_data/CPTAC-COAD-DX/CPTAC-COAD_SLIDE.csv"
-    feature_dir="/mnt/bulk/omarelnahhas/omarshome/omars_hdd/omar/omar/STAMP_data/CPTAC-COAD-DX/STAMP_macenko_xiyuewang-ctranspath-7c998680"
+    deploy_folder="autol_cagrad_isMSIH_Intratumor Heterogeneity_joint-mtl-cpath_xxxxx"
+    model_path=f"/path/to/{deploy_folder}"
+    clini_table="/path/to/external/cohort/clini_table.xlsx"
+    slide_table="/path/to/external/cohort/slide_table.csv"
+    feature_dir="/path/to/external/cohort/feature/vectors/STAMP_raw_xiyuewang-ctranspath-7c998680"
     batch_size = 1
     instances_per_bag = None
     num_workers = 4
