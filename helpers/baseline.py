@@ -3,10 +3,10 @@ import numpy as np
 import torch
 import sklearn.preprocessing
 import sklearn.model_selection
-from data import make_dataloaders, make_dataset_df
-from model import EncDecTransformer
+from helpers.data import make_dataloaders, make_dataset_df
+from helpers.model import EncDecTransformer
 from config import TrainConfig
-from metrics import plot_regression_pearson, plot_classification_metrics
+from helpers.metrics import plot_regression_pearson, plot_classification_metrics
 from datetime import datetime
 from pathlib import Path
 import os

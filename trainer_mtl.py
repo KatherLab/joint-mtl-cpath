@@ -1,11 +1,15 @@
 
 
 import torch.optim as optim
-from utils import *
-from model import EncDecTransformer
+from helpers.utils import *
+from helpers.model import EncDecTransformer
+from helpers import baseline
 from config import TrainConfig
+from helpers.data import make_dataset_df, make_dataloaders
+from helpers.metrics import plot_classification_metrics, plot_regression_pearson
+
+import torch.optim as optim
 from pathlib import Path
-from data import make_dataset_df, make_dataloaders
 import sklearn
 import sklearn.model_selection
 from datetime import datetime
@@ -18,8 +22,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import glob
-from metrics import plot_classification_metrics, plot_regression_pearson
-import baseline
 
 
 torch.manual_seed(1337)
