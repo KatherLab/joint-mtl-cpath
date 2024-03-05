@@ -9,28 +9,17 @@ __all__ = [
 
 
 class EncDecTransformer(nn.Module):
-    """An encoder decoder architecture for multilabel classification tasks
-
-    This architecture is a modified version of the one found in [Attention Is
-    All You Need][1]: First, we project the features into a lower-dimensional
-    feature space, to prevent the transformer architecture's complexity from
-    exploding for high-dimensional features.  We add sinusodial [positional
-    encodings][1].  We then encode these projected input tokens using a
-    transformer encoder stack.  Next, we decode these tokens using a set of
-    class tokens, one per output label.  Finally, we forward each of the decoded
-    tokens through a fully connected layer to get a label-wise prediction.
-
-                  PE1
-                   |
-             +--+  v   +---+
-        t1 --|FC|--+-->|   |--+
+    """An encoder decoder architecture for joint multi-task learning tasks
+                    
+             +--+      +---+
+        t1 --|FC|----->|   |--+
          .   +--+      | E |  |
          .             | x |  |
          .   +--+      | n |  |
-        tn --|FC|--+-->|   |--+
-             +--+  ^   +---+  |
-                   |          |
-                  PEn         v
+        tn --|FC|----->|   |--+
+             +--+      +---+  |
+                              |
+                              v
                             +---+   +---+
         c1 ---------------->|   |-->|FC1|--> s1
          .                  | D |   +---+     .
@@ -39,47 +28,6 @@ class EncDecTransformer(nn.Module):
         ck ---------------->|   |-->|FCk|--> sk
                             +---+   +---+
 
-    We opted for this architecture instead of a more traditional [Vision
-    Transformer][2] to improve performance for multi-label predictions with many
-    labels.  Our experiments have shown that adding too many class tokens to a
-    vision transformer decreases its performance, as the same weights have to
-    both process the tiles' information and the class token's processing.  Using
-    an encoder-decoder architecture alleviates these issues, as the data-flow of
-    the class tokens is completely independent of the encoding of the tiles.
-    Furthermore, analysis has shown that there is almost no interaction between
-    the different classes in the decoder.  While this points to the decoder
-    being more powerful than needed in practice, this also means that each
-    label's prediction is mostly independent of the others.  As a consequence,
-    noisy labels will not negatively impact the accuracy of non-noisy ones.
-
-    In our experiments so far we did not see any improvement by adding
-    positional encodings.  We tried
-
-     1. [Sinusodal encodings][1]
-     2. Adding absolute positions to the feature vector, scaled down so the
-        maximum value in the training dataset is 1.
-
-    Since neither reduced performance and the author percieves the first one to
-    be more elegant (as the magnitude of the positional encodings is bounded),
-    we opted to keep the positional encoding regardless in the hopes of it
-    improving performance on future tasks.
-
-    The architecture _differs_ from the one descibed in [Attention Is All You
-    Need][1] as follows:
-
-     1. There is an initial projection stage to reduce the dimension of the
-        feature vectors and allow us to use the transformer with arbitrary
-        features.
-     2. Instead of the language translation task described in [Attention Is All
-        You Need][1], where the tokens of the words translated so far are used
-        to predict the next word in the sequence, we use a set of fixed, learned
-        class tokens in conjunction with equally as many independent fully
-        connected layers to predict multiple labels at once.
-
-    [1]: https://arxiv.org/abs/1706.03762 "Attention Is All You Need"
-    [2]: https://arxiv.org/abs/2010.11929
-        "An Image is Worth 16x16 Words:
-         Transformers for Image Recognition at Scale"
     """
 
     def __init__(
