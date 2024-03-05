@@ -11,7 +11,7 @@ class TrainConfig:
     feature_dir="/path/to/feature/vectors/STAMP_raw_xiyuewang-ctranspath-7c998680"
 
     # Training-related configuration
-    baseline=True # If True, the baseline model is trained
+    baseline=False # If True, the baseline model is trained
     task_type= "classification" # Only valid for baseline. "joint", "regression", "classification"
     weight="autol" # task weighting methods: equal, dwa, uncert, autol. Not valid with baseline.
     grad_method="cagrad" # gradient weighting methods: graddrop, pcgrad, cagrad. Not valid with baseline.
