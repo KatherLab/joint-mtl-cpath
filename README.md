@@ -1,5 +1,9 @@
-# joint-mtl-cpath
-Joint multi-task learning improves weakly-supervised biomarker prediction in computational pathology
+# Joint multi-task learning in computational pathology
+This repository contains the accompanying code for the preprint [preprint](https://arxiv.org/abs/2403.03891):
+
+>Joint multi-task learning improves weakly-supervised biomarker prediction in computational pathology
+
+<img src="docs/overview.png" align="middle" />
 
 ## Data prerequisites
 Preprocess your WSI data to obtain feature matrices, slide table and clinical table according to the [STAMP protocol](https://github.com/KatherLab/STAMP). The paper focuses on MSI and HRD combined with signatures from the TME in colorectal cancer and lung adenocarcinoma, respectively. However, this framework is applicable for essentially any combination of categorical and continuous weak labels.
