@@ -1,5 +1,5 @@
 # Joint multi-task learning in computational pathology
-This repository contains the accompanying code for the preprint [preprint](https://arxiv.org/abs/2403.03891):
+This repository contains the accompanying code for the [preprint](https://arxiv.org/abs/2403.03891):
 
 >Joint multi-task learning improves weakly-supervised biomarker prediction in computational pathology
 
