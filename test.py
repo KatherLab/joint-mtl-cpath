@@ -1,13 +1,13 @@
 from config import TestConfig
-from data import make_dataloaders, make_dataset_df
 from pathlib import Path
-from evaluate import evaluate
-from model import EncDecTransformer
 import torch
 import os
 import numpy as np
 import glob
-from metrics import plot_classification_metrics
+from helpers.metrics import plot_classification_metrics
+from helpers.evaluate import evaluate
+from helpers.model import EncDecTransformer
+from helpers.data import make_dataloaders, make_dataset_df
 
 torch.manual_seed(1337)
 config = TestConfig()
